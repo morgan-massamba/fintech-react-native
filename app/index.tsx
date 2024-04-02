@@ -1,10 +1,17 @@
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { Video, ResizeMode } from "expo-av";
 import { useAssets } from "expo-asset";
-import { Link } from "expo-router";
+import { Link, Redirect } from "expo-router";
+import { useState } from "react";
 
 export default function Page() {
   const [assets] = useAssets(require("@/assets/videos/intro.mp4"));
+
+  const [authenticated, setAuthenticaed] = useState(true);
+
+  if (authenticated) {
+    return <Redirect href="/(tabs)"></Redirect>;
+  }
 
   return (
     <View style={styles.container}>

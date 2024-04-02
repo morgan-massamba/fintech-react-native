@@ -10,12 +10,14 @@ import {
 import React, { useState } from "react";
 import LoginButton from "@/components/LoginButton";
 import Divider from "@/components/Divider";
+import { useRouter } from "expo-router";
 
 export default function Page() {
+  const router = useRouter();
   const [phoneNumber, setPhoneNumber] = useState<string>("");
 
   const login = () => {
-    console.log("login fonction");
+    router.push("/(tabs)");
   };
 
   return (
@@ -35,7 +37,6 @@ export default function Page() {
           <TextInput
             style={styles.phoneNumberInput}
             value={phoneNumber}
-            autoFocus
             placeholder="Mobile Number"
             keyboardType="number-pad"
             onChangeText={setPhoneNumber}
